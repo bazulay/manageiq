@@ -25,7 +25,7 @@ APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 Dir.chdir APP_ROOT do
   puts "== Installing dependencies =="
   system "gem install bundler --conservative"
-  system "bundle check || bundle install"
+  system "bundle check || bundle install --retry=10 --jobs=10"
   system "bower install --allow-root -F --config.analytics=false"
 
   puts "\n== Copying sample files =="
